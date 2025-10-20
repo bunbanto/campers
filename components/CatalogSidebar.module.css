@@ -1,0 +1,90 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+.locationInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 16px 20px;
+  background-color: var(--inputs);
+}
+
+.locationInput input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  color: var(--gray-dark);
+  background-color: var(--inputs);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.5rem;
+}
+
+.iconButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.iconButton:hover {
+  border-color: #999;
+}
+
+.iconButton span {
+  font-size: 0.8rem;
+}
+
+.active {
+  border-color: #e44848;
+  color: #e44848;
+}
+
+.searchButton {
+  background: #e44848;
+  color: #fff;
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.searchButton:hover {
+  background: #c43737;
+}

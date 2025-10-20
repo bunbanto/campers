@@ -1,0 +1,11 @@
+.stars {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.starsWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}

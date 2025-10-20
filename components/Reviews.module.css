@@ -1,0 +1,54 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 631px;
+}
+
+.reviewerName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.comment {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.reviewCard {
+  gap: 16px;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.34;
+  color: var(--button);
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background: var(--badges);
+}

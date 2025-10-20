@@ -1,0 +1,23 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background: url('../public/img/banner.png') center/cover no-repeat;
+}
+
+.herocontent {
+  font-weight: 600;
+  color: var(--inputs);
+  padding-left: 79px;
+}
+
+.title {
+  margin: 0;
+}
+
+.subject {
+  margin-top: 16px;
+  margin-bottom: 40px;
+  padding: 16px 0;
+}
