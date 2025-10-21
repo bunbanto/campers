@@ -1,3 +1,9 @@
+/* .container {
+      max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 64px;
+} */
+
 .location {
       display: flex;
   flex-direction: row;

@@ -1,17 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+   padding: 0 64px 80px 64px;
+   max-width: 1440px;
+    margin: 0 auto;
+    
+}
+
 .features {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-padding: 44px 80px;
-width: 631px;
+padding: 44px 52px;
+width: 641px;
 background: var(--inputs);
   }
 
 .tabContent {
     display: flex;
-   justify-content: space-around;
+    align-items: stretch;
+   
     gap: 32px;
-    display: flex;
+    
 }
 
 

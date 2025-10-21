@@ -25,13 +25,7 @@ export default function CatalogPage() {
             }}
           />
         </div>
-        <div
-          style={{
-            display: 'grid',
-            gap: '1rem',
-            marginTop: '1rem',
-          }}
-        >
+        <div className={styles.cards}>
           {loading && campers.length === 0 && <p>Loading...</p>}
 
           {campers.map(camper => (

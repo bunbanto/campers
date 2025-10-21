@@ -8,7 +8,7 @@ import StarRating from './UI/Rating';
 export default function CamperDetails({ camper }: { camper: Camper }) {
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <div className={styles.rating}>
           <div className={styles.ratingWrapper}>
             <StarRating rating={camper.rating} single />

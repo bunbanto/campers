@@ -1,21 +1,52 @@
-.form {
-    display: flex;
-flex-direction: column;
-    border: 1px solid var(--gray-light);
-border-radius: 10px;
-padding: 44px;
-width: 641px;
-
+.container {
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  padding: 44px;
+  width: 641px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
 .orderForm {
-    display: flex;
-    
-  
+display: flex;
 background: var(--inputs);
-    border-radius: 12px;
+border-radius: 12px;
 padding: 18px 337px 18px 18px;
 width: 527px;
+outline: none;
+border: none;
 
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.form input,
+.form textarea {
+  border: var(--inputs);
+  border-radius: 12px;
+  padding: 18px;
+  width: 527px;
+  background: var(--inputs);
+}
+
+.text {
+    font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--gray);
+padding-left: 16px;
+margin: 8px 0 24px 0;
+}
+
+.container h3 {
+    padding-left: 16px;
 }

@@ -36,36 +36,46 @@ export default function BookingForm({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <input
-        value={name}
-        onChange={e => setName(e.target.value)}
-        placeholder="Name"
-        required
-        className={styles.orderForm}
-      />
-      <input
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-        className={styles.orderForm}
-      />
-      <input
-        type="date"
-        value={date}
-        onChange={e => setDate(e.target.value)}
-        required
-        className={styles.orderForm}
-      />
-      <textarea
-        value={comment}
-        onChange={e => setComment(e.target.value)}
-        placeholder="Comment"
-        className={styles.orderForm}
-      />
-      <Button text="Submit" />
-    </form>
+    <div className={styles.container}>
+      <h3>Book your campervan now</h3>
+      <p className={styles.text}>
+        Stay connected! We are always ready to help you.
+      </p>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input
+          value={name}
+          onChange={e => setName(e.target.value)}
+          placeholder="Name*"
+          required
+          className={styles.orderForm}
+        />
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email*"
+          required
+          className={styles.orderForm}
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={e => setDate(e.target.value)}
+          placeholder="Booking Date*"
+          required
+          className={styles.orderForm}
+        />
+        <textarea
+          value={comment}
+          onChange={e => setComment(e.target.value)}
+          rows={5}
+          placeholder="Comment"
+          className={styles.orderForm}
+        />
+
+        <Button text="Send" />
+      </form>
+    </div>
   );
 }

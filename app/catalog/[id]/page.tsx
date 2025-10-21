@@ -26,7 +26,7 @@ export default function CamperPage() {
   if (!camper) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>{camper.name}</h1>
       <CamperDetails camper={camper} />
       <div className={styles.tabs}>
