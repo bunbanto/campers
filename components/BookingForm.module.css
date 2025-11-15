@@ -16,6 +16,11 @@ background: var(--inputs);
 border-radius: 12px;
 padding: 18px 337px 18px 18px;
 width: 527px;
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--gray);
 outline: none;
 border: none;
 

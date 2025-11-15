@@ -3,6 +3,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import Button from './UI/Button/button';
 import styles from './BookingForm.module.css';
+import { CustomDatePicker } from './UI/DatePicker/DatePicker';
 
 export default function BookingForm({
   camperId,
@@ -13,7 +14,7 @@ export default function BookingForm({
 }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<Date | null>(null);
   const [comment, setComment] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +32,7 @@ export default function BookingForm({
     toast.success(`${camperId} Booking ${camperName} successful!`);
     setName('');
     setEmail('');
-    setDate('');
+    setDate(null as Date | null);
     setComment('');
   };
 
@@ -58,13 +59,12 @@ export default function BookingForm({
           required
           className={styles.orderForm}
         />
-        <input
-          type="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
-          placeholder="Booking Date*"
-          required
-          className={styles.orderForm}
+        <CustomDatePicker
+          selectedDate={date}
+          onChange={(date: Date | null) => setDate(date)}
+          // placeholder="Booking date*"
+          // className={styles.orderForm}
+          // dateFormat="yyyy-MM-dd"
         />
         <textarea
           value={comment}

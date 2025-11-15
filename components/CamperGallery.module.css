@@ -1,15 +1,16 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 48px;
 }
 
 .imageWrapper {
   position: relative;
   width: 292px;
   height: 320px;
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 28px;
 }
 
 .image {

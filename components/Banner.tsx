@@ -4,16 +4,14 @@ import Button from './UI/Button/button';
 
 export default function Banner() {
   return (
-    <section className={css.hero}>
-      <div className="bg-black/40 absolute inset-0" />
+    <section className={css.banner}>
+      <div className={css.hero} />
 
-      <div className={css.title}>
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Explore the World with Comfort
-        </h1>
-        <p className="text-lg md:text-xl mb-8">
-          Choose your perfect camper and start your adventure today.
-        </p>
+      <div className={css.content}>
+        <h1 className={css.title}>Campers of your dreams</h1>
+        <h2 className={css.text}>
+          You can find everything you want in our catalog.
+        </h2>
 
         <Button text="View Now" route="/catalog" />
       </div>

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Filters } from '../store/useStore';
 import styles from './CatalogSidebar.module.css';
 import Image from 'next/image';
+import Button from './UI/Button/button';
 
 export default function CatalogSidebar({
   onApply,
@@ -24,7 +25,7 @@ export default function CatalogSidebar({
   };
 
   const handleSearch = () => {
-    onApply({ location, form, features });
+    onApply({ location, form, features: [] });
   };
 
   return (
@@ -44,7 +45,6 @@ export default function CatalogSidebar({
       </div>
       {/* Filters */}
       <h3 className={styles.subtitle}>Filters</h3>
-
       <div className={styles.block}>
         <h4 className={styles.label}>Vehicle equipment</h4>
         <div className={styles.grid}>
@@ -109,7 +109,6 @@ export default function CatalogSidebar({
           </button>
         </div>
       </div>
-
       {/* Vehicle type */}
       <div className={styles.block}>
         <h4 className={styles.label}>Vehicle type</h4>
@@ -150,10 +149,7 @@ export default function CatalogSidebar({
           </button>
         </div>
       </div>
-
-      <button onClick={handleSearch} className={styles.searchButton}>
-        Search
-      </button>
+      <Button onClick={handleSearch} text="Search" />
     </aside>
   );
 }

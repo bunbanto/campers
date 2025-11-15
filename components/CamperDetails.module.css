@@ -1,8 +1,10 @@
-/* .container {
-      max-width: 1440px;
-    margin: 0 auto;
-    padding: 48px 64px;
-} */
+.description {
+     font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--text);
+  }
 
 .location {
       display: flex;

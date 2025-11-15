@@ -1,0 +1,95 @@
+.datePickerContainer {
+    position: relative;
+
+
+
+}
+
+.datePickerInput {
+   border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  outline: none !important;
+      display: flex;
+background: var(--inputs);
+padding: 18px 337px 18px 18px;
+width: 527px;
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--gray);
+}
+
+/* Apply global styles to the library */
+:global(.react-datepicker__header) {
+  background-color: var(--gray-biglight) !important;
+  border-bottom: none !important;
+  padding-top: 8px !important;
+}
+
+:global(.react-datepicker__day-name) {
+  color: transparent !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  width: 36px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  text-align: center !important;
+}
+
+/* Replacing day names */
+:global(.react-datepicker__day-name:nth-child(1)::after) {
+  content: 'MON';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(2)::after) {
+  content: 'TUE';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(3)::after) {
+  content: 'WED';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(4)::after) {
+  content: 'THU';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(5)::after) {
+  content: 'FRI';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(6)::after) {
+  content: 'SAT';
+  color: var(--text);
+}
+:global(.react-datepicker__day-name:nth-child(7)::after) {
+  content: 'SUN';
+  color: var(--text);
+}
+
+/* Selected number */
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  border-radius: 32px !important;
+  width: 36px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  background: var(--text) !important;
+  color: var(--gray-biglight) !important;
+}
+
+/* All days */
+:global(.react-datepicker__day) {
+  width: 36px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  margin: 2px !important;
+  text-align: center !important;
+}
+
+/* Hover effect */
+:global(.react-datepicker__day:hover) {
+  background: #e4e7ec !important;
+  border-radius: 32px !important;
+}
