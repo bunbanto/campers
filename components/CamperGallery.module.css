@@ -2,12 +2,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
+  margin-bottom: 28px;
 }
 
+
 .imageWrapper {
+  display: flex;
   position: relative;
-  width: 292px;
-  height: 320px;
+  /* width: 292px;
+  height: 320px; */
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 28px;
@@ -16,6 +19,7 @@
 .image {
   object-fit: cover;
   transition: transform 0.2s;
+  width: 100%;
 }
 
 .image:hover {

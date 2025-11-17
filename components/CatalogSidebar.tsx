@@ -13,6 +13,7 @@ export default function CatalogSidebar({
   const [location, setLocation] = useState('');
   const [form, setForm] = useState('');
   const [features, setFeatures] = useState<string[]>([]);
+  const [transmission, setTransmission] = useState('');
 
   const toggleFeature = (name: string) => {
     setFeatures(prev =>
@@ -25,28 +26,28 @@ export default function CatalogSidebar({
   };
 
   const handleSearch = () => {
-    onApply({ location, form, features: [] });
+    onApply({ location, form, features });
   };
 
   return (
     <aside className={styles.sidebar}>
       {/* Location */}
       <div className={styles.block}>
-        <h2 className={styles.label}>Location</h2>
+        <h2 className={styles.labelloc}>Location</h2>
         <div className={styles.locationInput}>
           <Image src={'/img/map.svg'} alt="Map" width={20} height={20} />
           <input
             type="text"
             value={location}
             onChange={e => setLocation(e.target.value)}
-            placeholder="City"
+            placeholder="Kyiv, Ukraine"
           />
         </div>
       </div>
       {/* Filters */}
       <h3 className={styles.subtitle}>Filters</h3>
       <div className={styles.block}>
-        <h4 className={styles.label}>Vehicle equipment</h4>
+        <h3 className={styles.label}>Vehicle equipment</h3>
         <div className={styles.grid}>
           <button
             className={`${styles.iconButton} ${
@@ -70,11 +71,13 @@ export default function CatalogSidebar({
 
           <button
             className={`${styles.iconButton} ${
-              features.includes('automatic') ? styles.active : ''
+              transmission === 'automatic' ? styles.active : ''
             }`}
-            onClick={() => toggleFeature('automatic')}
+            onClick={() =>
+              setTransmission(prev => (prev === 'automatic' ? '' : 'automatic'))
+            }
           >
-            <Image src={'/img/auto.svg'} alt="auto" width={32} height={32} />
+            <Image src={'/img/auto.svg'} alt="Auto" width={32} height={32} />
             <span>Automatic</span>
           </button>
 
@@ -111,13 +114,13 @@ export default function CatalogSidebar({
       </div>
       {/* Vehicle type */}
       <div className={styles.block}>
-        <h4 className={styles.label}>Vehicle type</h4>
+        <h3 className={styles.label}>Vehicle type</h3>
         <div className={styles.grid}>
           <button
             className={`${styles.iconButton} ${
-              form === 'Van' ? styles.active : ''
+              form === 'panelTruck' ? styles.active : ''
             }`}
-            onClick={() => toggleForm('Van')}
+            onClick={() => toggleForm('panelTruck')}
           >
             <Image src="/img/van.svg" alt="Van" width={32} height={32} />
             <span>Van</span>
@@ -125,9 +128,9 @@ export default function CatalogSidebar({
 
           <button
             className={`${styles.iconButton} ${
-              form === 'Fully Integrated' ? styles.active : ''
+              form === 'fullyIntegrated' ? styles.active : ''
             }`}
-            onClick={() => toggleForm('Fully Integrated')}
+            onClick={() => toggleForm('fullyIntegrated')}
           >
             <Image
               src="/img/full.svg"
@@ -140,16 +143,18 @@ export default function CatalogSidebar({
 
           <button
             className={`${styles.iconButton} ${
-              form === 'Alcove' ? styles.active : ''
+              form === 'alcove' ? styles.active : ''
             }`}
-            onClick={() => toggleForm('Alcove')}
+            onClick={() => toggleForm('alcove')}
           >
             <Image src="/img/alcove.svg" alt="Alcove" width={32} height={32} />
             <span>Alcove</span>
           </button>
         </div>
       </div>
-      <Button onClick={handleSearch} text="Search" />
+      <div className={styles.search}>
+        <Button onClick={handleSearch} text="Search" />
+      </div>
     </aside>
   );
 }

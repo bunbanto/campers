@@ -69,10 +69,18 @@ export const useStore = create<State>()(
 
         try {
           const nextPage = loadMore ? page + 1 : 1;
+          const featureParams: any = {};
+          if (filters.features && Array.isArray(filters.features)) {
+            filters.features.forEach(f => {
+              featureParams[f] = true;
+            });
+          }
           const newCampers = await getCampers({
             page: nextPage,
             limit,
-            ...filters,
+            location: filters.location,
+            form: filters.form,
+            ...featureParams,
           });
 
           set({

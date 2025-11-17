@@ -27,7 +27,7 @@ export default function CamperPage() {
 
   return (
     <div className={styles.container}>
-      <h1>{camper.name}</h1>
+      <h1 className={styles.name}>{camper.name}</h1>
       <CamperDetails camper={camper} />
       <div className={styles.tabs}>
         <button

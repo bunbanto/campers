@@ -1,3 +1,5 @@
+
+
 .description {
      font-family: var(--font-family);
 font-weight: 400;
@@ -10,6 +12,33 @@ color: var(--text);
       display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   margin-top: 8px;
+  margin-left: 16px;
+  
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+ margin-bottom: 16px;
+align-items: flex-end
+}
+
+.location p {
+  font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--main);
+}
+
+.price {
+  font-family: var(--font-family);
+font-weight: 600;
+font-size: 24px;
+line-height: 133%;
+color: var(--main);
+margin-bottom: 28px;
 }

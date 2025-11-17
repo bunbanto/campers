@@ -19,8 +19,8 @@ export function CamperGallery({ images }: CamperGalleryProps) {
           <Image
             src={img.thumb}
             alt={`Camper image ${idx + 1}`}
-            width="292"
-            height="320"
+            width="280"
+            height="200"
             className={styles.image}
             loading={idx === 0 ? 'eager' : 'lazy'} // first image is faster
           />

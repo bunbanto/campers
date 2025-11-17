@@ -60,7 +60,7 @@ export default function CamperCard({ camper }: { camper: Camper }) {
             height={16}
             className={styles.map}
           />
-          <p>{camper.location}</p>
+          <p className={styles.textloc}>{camper.location}</p>
         </div>
         <p className={styles.description}>
           {camper.description.slice(0, 64)}...

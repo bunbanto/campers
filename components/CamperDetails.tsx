@@ -14,18 +14,19 @@ export default function CamperDetails({ camper }: { camper: Camper }) {
             <StarRating rating={camper.rating} single />
             {camper.rating ? camper.rating.toFixed(1) : 'N/A'}
             {camper.reviews ? ` (${camper.reviews.length} Reviews)` : 'Reviews'}
+
+            <div className={styles.location}>
+              <Image
+                src={'/img/map.svg'}
+                alt="map"
+                width={16}
+                height={16}
+                className={styles.map}
+              />
+              <p>{camper.location}</p>
+            </div>
           </div>
-          <div className={styles.location}>
-            <Image
-              src={'/img/map.svg'}
-              alt="map"
-              width={16}
-              height={16}
-              className={styles.map}
-            />
-            <p>{camper.location}</p>
-          </div>
-          <p className={styles.price}>{formatPrice(camper.price)} € </p>
+          <p className={styles.price}> €{formatPrice(camper.price)}</p>
         </div>
         <CamperGallery images={camper.gallery || []} />
 

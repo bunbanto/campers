@@ -1,23 +1,42 @@
 .container {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    
     justify-content: space-around;
     padding: 0 64px 80px 64px;
 }
-.loadMoreButton {
-    border: 1px solid var(--gray-light);
-border-radius: 200px;
-padding: 16px 32px;
-width: 145px;
-height: 56px;
-font-family: var(--font-family);
-font-weight: 500;
-font-size: 16px;
-line-height: 150%;
-letter-spacing: -0.01em;
-color: var(--main);
+
+
+.loadMoreBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+
+
 }
+
+
+.loadMoreButton{
+   letter-spacing: -.01em;
+    text-align: center;
+    border: 1px solid var(--gray-light);
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 200px;
+    width: 145px;
+    height: 56px;
+    padding: 16px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    transition: background .2s;
+    display: inline-block
+}
+
+.loadMoreButton:hover{
+    border: 1px solid var(--button-hover);
+    }
 .cards {
     display: grid;
     gap: 1rem;
