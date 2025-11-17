@@ -19,8 +19,11 @@
   font-size: 0.9rem;
 }
 .labelloc {
-  font-weight: 500;
-  color: var(--gray-dark);
+  font-family: var(--font-family);
+font-weight: 400;
+font-size: 16px;
+line-height: 150%;
+color: var(--gray);
   
 }
 
@@ -83,7 +86,7 @@
 
 .active {
   border-color: #e44848;
-  color: #e44848;
+  /* color: #e44848; */
 }
 
 .searchButton {

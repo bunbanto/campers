@@ -3,7 +3,7 @@
     flex-direction: row;
     
     justify-content: space-around;
-    padding: 0 64px 80px 64px;
+    padding: 48px 64px 80px 64px;
 }
 
 
@@ -40,5 +40,5 @@
 .cards {
     display: grid;
     gap: 1rem;
-    margin-top: 1rem;
+   
 }
