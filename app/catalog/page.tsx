@@ -5,11 +5,10 @@ import CamperCard from '@/components/CamperCard';
 import styles from './page.module.css';
 
 import CatalogSidebar from '@/components/CatalogSidebar';
-// import Button from '@/components/UI/Button/button';
-// import CatalogList from '@/components/CatalogList';
+import Loader from '@/components/Loader';
 
 export default function CatalogPage() {
-  const { campers, loadCampers, loading, resetCampersAndSetFilters } =
+  const { campers, loadCampers, loading, resetCampersAndSetFilters, hasMore } =
     useStore();
 
   useEffect(() => {
@@ -27,20 +26,28 @@ export default function CatalogPage() {
         />
 
         <div className={styles.cards}>
+          {/* Перший лоадер */}
           {loading && campers.length === 0 && <p>Loading...</p>}
 
+          {/* Список кемперів */}
           {campers.map(camper => (
             <CamperCard key={camper.id} camper={camper} />
           ))}
-          <div className={styles.loadMoreBtn}>
-            <button
-              onClick={() => loadCampers(true)}
-              className={styles.loadMoreButton}
-            >
-              Load More
-            </button>
-          </div>
-          {loading ? 'Loading...' : ''}
+
+          {/* Кнопка Load More */}
+          {hasMore && !loading && (
+            <div className={styles.loadMoreBtn}>
+              <button
+                onClick={() => loadCampers(true)}
+                className={styles.loadMoreButton}
+              >
+                Load More
+              </button>
+            </div>
+          )}
+
+          {/* Loader під час дозавантаження */}
+          {loading && campers.length > 0 && <Loader />}
         </div>
       </div>
     </main>

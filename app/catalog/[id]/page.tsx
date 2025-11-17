@@ -9,6 +9,7 @@ import Reviews from '../../../components/Reviews';
 import styles from './page.module.css';
 import { TAGS } from '@/app/constants/camper';
 import Image from 'next/image';
+import Loader from '@/components/Loader';
 
 export default function CamperPage() {
   const params = useParams();
@@ -23,7 +24,12 @@ export default function CamperPage() {
     })();
   }, [id]);
 
-  if (!camper) return <div>Loading...</div>;
+  if (!camper)
+    return (
+      <>
+        <Loader />
+      </>
+    );
 
   return (
     <div className={styles.container}>

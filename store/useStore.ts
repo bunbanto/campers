@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Camper } from '../types/camper';
-import { getCampers } from '../lib/api'; // ← функція для запиту з бекенда
+import { getCampers } from '../lib/api';
 
 export type Filters = {
   location?: string;
-  form?: string; // тип кузова
-  features?: string[]; // ['AC','kitchen']
+  form?: string;
+  features?: string[];
 };
 
 type State = {
@@ -14,18 +14,15 @@ type State = {
   page: number;
   limit: number;
   totalLoaded: number;
+  hasMore: boolean;
   filters: Filters;
   favorites: string[];
   loading: boolean;
   setFilters: (f: Filters) => void;
   resetCampersAndSetFilters: (f: Filters) => void;
-  appendCampers: (items: Camper[]) => void;
-  setCampers: (items: Camper[]) => void;
-  incrementPage: () => void;
-  setLoading: (v: boolean) => void;
   toggleFavorite: (id: string) => void;
   clearFavorites: () => void;
-  loadCampers: (loadMore?: boolean) => Promise<void>; // ✅ новий метод
+  loadCampers: (loadMore?: boolean) => Promise<void>;
 };
 
 export const useStore = create<State>()(
@@ -35,21 +32,22 @@ export const useStore = create<State>()(
       page: 1,
       limit: 4,
       totalLoaded: 0,
+      hasMore: true,
       filters: {},
       favorites: [],
       loading: false,
 
       setFilters: f => set({ filters: { ...get().filters, ...f } }),
+
       resetCampersAndSetFilters: f =>
-        set({ filters: { ...f }, campers: [], page: 1, totalLoaded: 0 }),
-      appendCampers: items =>
-        set(s => ({
-          campers: [...s.campers, ...items],
-          totalLoaded: s.totalLoaded + items.length,
-        })),
-      setCampers: items => set({ campers: items, totalLoaded: items.length }),
-      incrementPage: () => set(s => ({ page: s.page + 1 })),
-      setLoading: v => set({ loading: v }),
+        set({
+          filters: { ...f },
+          campers: [],
+          page: 1,
+          totalLoaded: 0,
+          hasMore: true, // ← скидаємо
+        }),
+
       toggleFavorite: id =>
         set(s => {
           const exists = s.favorites.includes(id);
@@ -59,9 +57,12 @@ export const useStore = create<State>()(
               : [...s.favorites, id],
           };
         }),
+
       clearFavorites: () => set({ favorites: [] }),
 
-      // ✅ Додаємо логіку завантаження кемперів
+      // --------------------------
+      // ЛОГІКА ЗАВАНТАЖЕННЯ КЕМПЕРІВ
+      // --------------------------
       loadCampers: async (loadMore = false) => {
         const { page, limit, filters, campers } = get();
 
@@ -69,13 +70,13 @@ export const useStore = create<State>()(
 
         try {
           const nextPage = loadMore ? page + 1 : 1;
-          const featureParams: any = {};
-          if (filters.features && Array.isArray(filters.features)) {
-            filters.features.forEach(f => {
-              featureParams[f] = true;
-            });
+
+          const featureParams: Record<string, boolean> = {};
+          if (filters.features) {
+            filters.features.forEach(f => (featureParams[f] = true));
           }
-          const newCampers = await getCampers({
+
+          const response = await getCampers({
             page: nextPage,
             limit,
             location: filters.location,
@@ -83,12 +84,21 @@ export const useStore = create<State>()(
             ...featureParams,
           });
 
+          // якщо бек повертає масив newCampers
+          const newCampers = response;
+
+          const updatedCampers = loadMore
+            ? [...campers, ...newCampers]
+            : newCampers;
+
+          // ❗ Важливо: якщо newCampers.length < limit → більше даних нема
+          const hasMore = newCampers.length === limit;
+
           set({
-            campers: loadMore ? [...campers, ...newCampers] : newCampers,
+            campers: updatedCampers,
             page: nextPage,
-            totalLoaded: loadMore
-              ? campers.length + newCampers.length
-              : newCampers.length,
+            // totalLoaded: updatedCampers.length,
+            hasMore,
           });
         } catch (error) {
           console.error('Failed to load campers:', error);
